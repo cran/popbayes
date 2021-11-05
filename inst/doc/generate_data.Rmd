@@ -1,0 +1,141 @@
+---
+title: "Get species information"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get species information}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment  = "#>"
+)
+```
+
+
+
+## Calculating rmax
+
+The demographic potential of a species is limited. The intrinsic rate of 
+increase $rmax$ is the maximum increase in log population size that a species 
+can attain in a year. According to Sinclair (2003), it is related to the body 
+mass of adult females $W$  by the formula:
+
+
+$$ rmax = 1.375 \times W^{-0.315} $$
+
+
+Body masses are found in the literature in publications such as Kingdon & 
+Hoffman (2013), Cornelis _et al._ (2014), Illius & Gordon (1992), 
+Sinclair (1996), Suraud _et al._ (2012), or Foley & Faust (2010). 
+Alternatively, $rmax$ can be obtained from specific demographic analyses. In the 
+following table, we have listed the $rmax$ values obtained with one or the other 
+method giving precedence to specific analyses when available.  
+
+
+
+```{r 'rmax'}
+species_name <- c("Impala", "Tiang", "Blue wildebeest", "Roan", "Buffalo", 
+                  "Eland", "Giraffe", "Elephant")
+
+adult_female_body_mass <- c(55, 127, 230, 250, 400, 450, 702, 2873)
+
+species <- data.frame(adult_female_body_mass, row.names = species_name)
+
+species$rmax <- 1.375 * adult_female_body_mass ^ (-0.315)
+species["Eland", "rmax"]    <- 0.150                 # Sinclair (1996)
+species["Elephant", "rmax"] <- 0.07                  # Foley & Faust (2010)
+species["Giraffe", "rmax"]  <- 0.125                 # Suraud et al. (2012)
+
+species
+```
+
+
+
+## Building conversion table
+
+Aerial and ground counts are not directly comparable because some species are 
+better detected from the ground and others from the air. It is generally 
+considered that small light species are better detected from the ground while 
+large dark species are better detected from the air. We took advantage of series 
+of counts carried out in parallel using the two field methods to calculate 
+conversion factors to be applied to aerial counts to obtain ground count 
+equivalents. This permits reconciling the two types of counts within a mixed 
+series. We also specify the preferred field method for each category of species.
+
+
+
+```{r 'conversion_fact'}
+categories <- c("Medium light and brown species (20-150kg)",
+                "Large light and brown species (>150kg)",
+                "Large dark (>150kg)", "Giraffe", "Elephant")
+
+short_names        <- c("MLB", "LLB", "LD", "Giraffe", "Elephant")
+conversion_facts   <- c(6.747, 2.302, 0.561, 3.011, 0.659)
+pref_field_methods <- c("G", "G", "A", "A", "A")
+
+category_info <- data.frame("category"          = categories,
+                            "acronym"           = short_names,
+                            "conversion_fact"   = conversion_facts, 
+                            "pref_field_method" = pref_field_methods)
+category_info
+```
+
+
+
+## Categorizing species
+
+Here we relate the species to a color/size category.
+
+
+```{r}
+species$"category" <- c("MLB", "MLB", "LLB", "LLB", "LD", "LLB", "Giraffe", 
+                        "Elephant")
+species
+```
+
+
+
+<br />
+
+
+
+## References
+
+
+- Cornelis D _et al._ (2014) Species account: African buffalo (_Syncerus caffer_).
+In: _Ecology, Evolution and Behaviour of Wild Cattle: Implications for Conservation_
+(Eds M Melletti & J Burton). Cambridge University Press, Cambridge.
+DOI: [10.1017/CBO9781139568098](https://doi.org/10.1017/CBO9781139568098).
+
+- Foley CAH & Faust LJ (2010) Rapid population growth in an elephant _Loxodonta africana_ 
+population recovering from poaching in Tarangire National Park, Tanzania.
+_Oryx_, **44**, 205-212.
+DOI: [10.1017/S0030605309990706](https://doi.org/10.1017/S0030605309990706).
+
+- Illius AW & Gordon IJ (1992) Modelling the nutritional ecology of ungulate 
+herbivores: evolution of body size and competitive interactions. 
+_Oecologia_, **89**, 428-434.
+DOI: [10.1017/S0030605309990706](https://doi.org/10.1007/BF00317422).
+
+- Kingdon J & Hoffman M (2013) 
+_Mammals of Africa. Volume VI: Pigs, Hippopotamuses, Chevrotain, Giraffes, Deer and Bovids_.
+Bloomsbury Publishing, London, United Kingdom, 680 pp.
+
+- Sinclair ARE (1996) Mammal populations: fluctuation, regulation, life history 
+theory, and their implications for conservation. 
+In: _Frontiers of population ecology_ (Eds RB Floyd & AW Sheppard), 
+pp. 127–154. CSIRO: Melbourne, Australia.
+
+- Sinclair (2003) Mammal population regulation, keystone processes and
+ecosystem dynamics.
+_Philosophical Transactions: Biological Sciences_, **358**, 1729-1740.
+DOI: [10.1098/rstb.2003.1359](https://doi.org/10.1098/rstb.2003.1359).
+
+- Suraud JP _et al._ (2012)
+Higher than expected growth rate of the endangered West African giraffe 
+_Giraffa camelopardalis peralta_: a successful human–wildlife cohabitation. 
+_Oryx_, **46**, 577-583.
+DOI: [10.1017/S0030605311000639](https://doi.org/10.1017/S0030605311000639).
