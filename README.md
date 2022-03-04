@@ -1,19 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# popbayes <img src="man/figures/hexsticker.png" height="120" align="right"/>
+# popbayes <img src="man/figures/hexsticker.png" height="120px" align="right" style="float:right; height:120px;"/>
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/popbayes)](https://CRAN.R-project.org/package=popbayes/)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/popbayes?color=blue)](https://CRAN.R-project.org/package=popbayes/)
 [![R CMD
 Check](https://github.com/frbcesab/popbayes/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/frbcesab/popbayes/actions/workflows/R-CMD-check.yaml)
 [![Website
 deployment](https://github.com/frbcesab/popbayes/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/frbcesab/popbayes/actions/workflows/pkgdown.yaml)
-[![License: GPL (>=
+[![License: GPL (\>=
 2)](https://img.shields.io/badge/License-GPL%20%28%3E%3D%202%29-blue.svg)](https://choosealicense.com/licenses/gpl-2.0/)
 [![LifeCycle](man/figures/lifecycle/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Dependencies](https://tinyverse.netlify.com/badge/popbayes)](https://cran.r-project.org/package=popbayes)
 <!-- badges: end -->
 
 The goal of the R package `popbayes` is to infer trends of one or
@@ -30,7 +34,14 @@ part of the FRB-CESAB working group
 **Before using this package, users need to install the freeware
 [JAGS](https://mcmc-jags.sourceforge.io/).**
 
-You can install the development version from
+You can install the stable version of the package from the
+[CRAN](https://cran.r-project.org) with:
+
+``` r
+install.packages("popbayes")
+```
+
+Alternatively you can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -53,8 +64,8 @@ vignette.
 
 Please cite this package as:
 
-> Casajus N. & Pradel R. (2021) popbayes: Bayesian model to estimate
-> population trends from counts series. R package version 1.0. URL:
+> Casajus N. & Pradel R. (2022) popbayes: Bayesian model to estimate
+> population trends from counts series. R package version 1.1. URL:
 > <https://frbcesab.github.io/popbayes/>.
 
 You can also run:
@@ -67,8 +78,8 @@ citation("popbayes")
 ## @Manual{,
 ##   title  = {{popbayes}: {B}ayesian model to estimate population trends from counts series,
 ##   author = {{Casajus N.}, and {Pradel R.}},
-##   year   = {2021},
-##   note   = {R package version 1.0},
+##   year   = {2022},
+##   note   = {R package version 1.1},
 ##   url    = {https://frbcesab.github.io/popbayes/},
 ## }
 ```

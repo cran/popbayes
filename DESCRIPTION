@@ -1,6 +1,6 @@
 Package: popbayes
 Type: Package
-Version: 1.0
+Version: 1.1
 Title: Bayesian Model to Estimate Population Trends from Counts Series
 Authors@R: c(
     person(
@@ -36,10 +36,10 @@ Imports: graphics, grDevices, R2jags, stats, usethis
 Suggests: knitr, rmarkdown
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
-Packaged: 2021-11-03 21:45:13 UTC; nicolascasajus
+Packaged: 2022-03-04 15:39:23 UTC; nicolascasajus
 Author: Nicolas Casajus [aut, cre, cph]
     (<https://orcid.org/0000-0002-5537-5294>),
   Roger Pradel [aut] (<https://orcid.org/0000-0002-2684-9251>)
 Maintainer: Nicolas Casajus <nicolas.casajus@fondationbiodiversite.fr>
 Repository: CRAN
-Date/Publication: 2021-11-05 08:10:08 UTC
+Date/Publication: 2022-03-04 16:10:02 UTC

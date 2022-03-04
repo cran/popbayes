@@ -104,7 +104,12 @@ path <- tempdir()
 #  path <- "the_folder_to_store_outputs"
 
 ## ----'format-data'------------------------------------------------------------
-garamba_formatted <- popbayes::format_data(data = garamba, path = path)
+garamba_formatted <- popbayes::format_data(data              = garamba, 
+                                           path              = path,
+                                           field_method      = "field_method",
+                                           pref_field_method = "pref_field_method",
+                                           conversion_A2G    = "conversion_A2G",
+                                           rmax              = "rmax")
 
 ## ----'explore-series'---------------------------------------------------------
 ## Class of the object ----
@@ -146,6 +151,9 @@ list.files(path, recursive = TRUE, pattern = "^garamba__")
 ## ----'diagnostic', eval = FALSE-----------------------------------------------
 #  popbayes::diagnostic(a_buselaphus_bugs)
 #  #> All models have converged.
+
+## ----'re-run-jags', eval = FALSE----------------------------------------------
+#  a_buselaphus_bugs <- popbayes::fit_trend(a_buselaphus, path = path, ni = 100000, nb = 20000)
 
 ## ----'plot-trend-1', fig.width=12, fig.height=6, out.width="100%", eval = FALSE, echo = TRUE----
 #  popbayes::plot_trend("garamba__alcelaphus_buselaphus", path = path)
