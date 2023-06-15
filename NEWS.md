@@ -1,3 +1,10 @@
+# popbayes 1.2.0
+
+# popbayes 1.2
+
+* Fix issue in `format_data()` when user imports a `tibble`
+* Fix some typos in documentation
+
 # popbayes 1.1
 
 * Change `stat_method` category `G` by `X` (eXpert knowledge) to avoid confusion
